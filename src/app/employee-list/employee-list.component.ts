@@ -23,20 +23,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeListComponent implements OnInit {
 
-  constructor(private EmployeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService) { }
 
   employees: Employee[];
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'emailId'];
 
-  // employees = ELEMENT_DATA;
-
   ngOnInit(): void {
-
+     this.getEmployees();
   }
 
   private getEmployees(){
-    this.EmployeeService.getEmployeesList().subscribe(data => {
+    this.employeeService.getEmployeesList().subscribe(data => {
       this.employees = data;
     })
   }
